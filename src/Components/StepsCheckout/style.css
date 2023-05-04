@@ -1,0 +1,119 @@
+
+.StepsCheckoutList{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    list-style: none;
+    vertical-align: baseline;
+    padding: 0;
+}
+
+.StepsCheckoutList::before{
+    content: "";
+    display: table;
+    line-height: 0;
+}
+
+.CheckoutStep1{
+    position: relative;
+    float: left;
+    text-align: center;
+    width: 33.333333%;
+}
+
+.ConnectStep1{
+    background-color: #36b376;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 100%;
+}
+
+.HolderIconCheckout1{
+    background-color: #36b376;
+    border: 4px solid #f4f6f8;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 21px;
+    line-height: 22px;
+    position: relative;
+    width: 21px;
+    z-index: 1;
+}
+
+.CheckoutStep2{
+    position: relative;
+    float: left;
+    text-align: center;
+    width: 33.333333%;
+}
+
+.ConnectStep2{
+    background-color: #adadad;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 100%;
+}
+
+.HolderIconCheckout2{
+    background-color: #adadad;
+    border: 4px solid #f4f6f8;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 21px;
+    line-height: 22px;
+    position: relative;
+    width: 21px;
+    z-index: 1;
+}
+
+.CheckoutStep3{
+    position: relative;
+    float: left;
+    text-align: center;
+    width: 33.333333%;
+}
+
+.ConnectStep3{
+    background-color: #adadad;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 100%;
+}
+
+.HolderIconCheckout3{
+    background-color: #adadad;
+    border: 4px solid #f4f6f8;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 21px;
+    line-height: 22px;
+    position: relative;
+    width: 21px;
+    z-index: 1;
+}
+
+
+
+.InfoCheckoutStep{
+    margin: 0 auto;
+    max-width: 87px;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+}
+
