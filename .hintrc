@@ -12,6 +12,7 @@
           "scale"
         ]
       }
-    ]
+    ],
+    "meta-viewport": "off"
   }
 }

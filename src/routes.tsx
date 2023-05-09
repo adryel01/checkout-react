@@ -7,7 +7,7 @@ import { Obrigado } from './pages/Obrigado';
 const Router = ()=>{
     return (
         <Routes>
-            <Route path='/checkout/data' element={<PageData/>}/>
+            <Route path='/' element={<PageData/>}/>
             <Route path='/checkout/address' element={<PageAddress/>}/>
             <Route path='/checkout/payment' element={<PagePayment/>}/>
             <Route path='/checkout/payload' element={<Obrigado/>}/>

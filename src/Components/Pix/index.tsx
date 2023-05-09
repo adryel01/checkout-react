@@ -21,12 +21,7 @@ export function PixGenerator() {
         }, 1000)
     }, [contador])
 
-    const texto: string = `00020126360014BR.GOV.BCB.
-    PIX0114+
-    55629937162
-    45520400005303986540589.
-    005802BR5912AdryelCesar6007Goiania
-    62160512PAGAMENTO2076304508D`
+    const texto: string = `00020126360014BR.GOV.BCB.PIX0114+5562993716245520400005303986540589.005802BR5912Adryel Cesar6007Goiania62160512PAGAMENTO2076304508D`
 
     function CopiarBotao(texto: string) {
         navigator.clipboard.writeText(texto);
@@ -53,7 +48,7 @@ export function PixGenerator() {
                         PIX0114+
                         55629937162
                         45520400005303986540589.
-                        005802BR5912AdryelCesar6007Goiania
+                        005802BR5912Adryel Cesar6007Goiania
                         62160512PAGAMENTO2076304508D
                     </span>
                     <button className="ButtonCopyPix" onClick={() => CopiarBotao(texto)}>Copiar PIX</button>

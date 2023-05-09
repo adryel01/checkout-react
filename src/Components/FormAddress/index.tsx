@@ -1,23 +1,31 @@
-import * as yup from 'yup'
-import { yupResolver } from "@hookform/resolvers/yup"
-import { useForm } from "react-hook-form"
-import { FormInput } from "../FormInput"
 import InputMask from 'react-input-mask'
 import './style.css'
 import { useNavigate } from "react-router-dom"
+import { useState } from 'react'
+
 
 export function FormAddress() {
     const navigate = useNavigate()
 
-    const formSchema = yup.object().shape({
-        endereco: yup.string().required('Endereço obrigatório'),
-        numero: yup.number().required('Número obrigatório'),
-        bairro: yup.number().required('Bairro obrigatório')
-    })
+    const [estado, setEstado] = useState('')
+    const [endereco, setEndereco] = useState('')
+    const [bairro, setBairro] = useState('')
 
-    const { register, formState: { errors }, } = useForm<any>({
-        resolver: yupResolver(formSchema),
-    })
+
+    const checkCEP = (e: any) => {
+        const cep = e.target.value
+        console.log(cep)
+
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(res => res.json())
+            .then(data => {
+                setEndereco(data.logradouro)
+                setBairro(data.bairro)
+                setEstado(`${data.localidade}-${data.uf}`)
+            })
+        
+
+    }
 
 
     return (
@@ -27,18 +35,30 @@ export function FormAddress() {
                     <div className='HolderNumber'>2</div>
                     <h2>Entrega</h2>
                 </div>
-                <p>Selecione um endereço</p>
+                <p>Selecione o endereço</p>
             </div>
             <form className="FormData" onSubmit={() => navigate('/checkout/payment')}>
-                <FormInput label="Endereço" register={register('endereco')} error={errors.endereco} type='text' id='endereco' placeholder='Digite seu endereço' />
-                <div className='NumberAddress'>
-                    <FormInput label="Número" register={register('numero')} error={errors.numero} type='number' id='numero'/>
-                    <FormInput label="Bairro" register={register} error={errors} type='text' id='bairro'/>
+                <div className='ContainerCEP'>
+                    <div className='DivCEP'>
+                        <label htmlFor="CEP" title='CEP'>CEP</label>
+                        <InputMask mask='99999-999' className='MaskCEP' required onBlur={checkCEP} />
+                    </div>
+                    <p>{estado}</p>
                 </div>
-                <label htmlFor="CEP" title='CEP'>CEP</label>
-                <InputMask mask='99999-999' className='MaskCEP' required/>
+                <label htmlFor="endereco">Endereço</label>
+                <input type="text" id='endereco' value={endereco} />
+                <div className='Address'>
+                    <div className='NumberAddress'>
+                        <label htmlFor="numero">Número</label>
+                        <input type="number" id='numero' required />
+                    </div>
+                    <div className='Neighbor'>
+                        <label htmlFor="bairro">Bairro</label>
+                        <input type="text" id='bairro' value={bairro} required />
+                    </div>
+                </div>
                 <label htmlFor="complemento" title='complemento'>Complemento <span>(opcional)</span></label>
-                <input type="complemento" name='complemento' id='complemento'/>
+                <input type="complemento" name='complemento' id='complemento' />
 
                 <label htmlFor="entrega">Forma de entrega:</label>
                 <section className='SectionFrete'>
